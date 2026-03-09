@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut stream = provider.tts(&CreateStreamTtsRequestPayload {
         text: "Hello from Rust Custom Provider via Baseten!".to_string(),
         voice_id: 0,
-        language: CreateStreamTtsRequestPayloadLanguage::EnUs,
+        language: TtsLanguage::EnUs,
         speech_model: None,
         user_instructions: None,
         enhance_named_entities_pronunciation: None,

@@ -4,10 +4,10 @@ pub use crate::prelude::*;
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct CreateStreamTtsRequestPayload {
     pub text: String,
-    pub language: CreateStreamTtsRequestPayloadLanguage,
+    pub language: TtsLanguage,
     pub voice_id: i64,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub speech_model: Option<CreateStreamTtsRequestPayloadSpeechModel>,
+    pub speech_model: Option<SpeechModel>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_instructions: Option<Option<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]

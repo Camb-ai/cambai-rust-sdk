@@ -16,8 +16,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut stream = client.text_to_speech.tts(&CreateStreamTtsRequestPayload {
         text: "Hello from Camb AI Rust SDK! This is a test.".to_string(),
         voice_id: 20303,
-        language: CreateStreamTtsRequestPayloadLanguage::EnUs,
-        speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Auto),
+        language: TtsLanguage::EnUs,
+        speech_model: Some(SpeechModel::Auto),
         user_instructions: None,
         enhance_named_entities_pronunciation: None,
         output_configuration: Some(StreamTtsOutputConfiguration {
