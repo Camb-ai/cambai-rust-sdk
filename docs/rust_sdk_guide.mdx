@@ -1,6 +1,8 @@
-# Rust SDK Quickstart
-
-Get started with the Camb.ai Rust SDK in minutes
+---
+title: "Rust SDK Quickstart"
+description: "Get started with the Camb.ai Rust SDK in minutes"
+icon: "rust"
+---
 
 ## Overview
 
@@ -16,6 +18,8 @@ camb_api = { git = "https://github.com/Camb-ai/cambai-rust-sdk" }
 tokio = { version = "1.0", features = ["full"] }
 futures = "0.3"
 ```
+
+---
 
 ## Authentication
 
@@ -49,7 +53,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         text: "Hello! Welcome to Camb.ai text-to-speech.".to_string(),
         language: CreateStreamTtsRequestPayloadLanguage::EnUs,
         voice_id: 147320,
-        speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::MarsFlash),
+        speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Mars8Flash),
         output_configuration: Some(StreamTtsOutputConfiguration {
             format: Some(OutputFormat::Wav),
             ..Default::default()
@@ -93,37 +97,44 @@ let stream = client.text_to_speech.tts(&payload, None).await?;
 save_stream_to_file(stream, "output.wav").await?;
 ```
 
+---
+
 ## Choosing a Model
 
 Camb.ai offers three MARS models optimized for different use cases:
 
-### MARS Flash
+<Tabs>
+  <Tab title="MARS Flash">
+    ```rust
+    speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Mars8Flash)
+    ```
 
-```rust
-speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::MarsFlash)
-```
+    **Best for:** Real-time voice agents, low-latency applications
 
-**Best for**: Real-time voice agents, low-latency applications  
-**Sample rate**: 22.05kHz
+    **Sample rate:** 22.05kHz
+  </Tab>
+  {/* <Tab title="MARS Pro">
+    ```rust
+    speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Mars8Pro)
+    ```
 
-### MARS Pro
+    **Best for:** Audio production, high-quality content
 
-```rust
-speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::MarsPro)
-```
+    **Sample rate:** 48kHz
+  </Tab> */}
+  <Tab title="MARS Instruct">
+    ```rust
+    speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Mars8Instruct),
+    user_instructions: Some("Speak in a warm, friendly tone".to_string()),
+    ```
 
-**Best for**: Audio production, high-quality content  
-**Sample rate**: 48kHz
+    **Best for:** Fine-grained control over tone and style
 
-### MARS Instruct
+    **Sample rate:** 22.05kHz
+  </Tab>
+</Tabs>
 
-```rust
-speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::MarsInstruct),
-user_instructions: Some("Speak in a warm, friendly tone".to_string()),
-```
-
-**Best for**: Fine-grained control over tone and style  
-**Sample rate**: 22.05kHz
+---
 
 ## Listing Available Voices
 
@@ -136,6 +147,8 @@ for voice in voices {
     println!("ID: {}, Name: {}, Gender: {:?}", voice.id, voice.voice_name, voice.gender);
 }
 ```
+
+---
 
 ## Language Support
 
@@ -152,6 +165,8 @@ language: CreateStreamTtsRequestPayloadLanguage::EsEs
 // French
 language: CreateStreamTtsRequestPayloadLanguage::FrFr
 ```
+
+---
 
 ## Error Handling
 
@@ -181,12 +196,26 @@ let tts_provider = BasetenProvider::new(
 );
 ```
 
+---
+
 ## Next Steps
 
-| | |
-| --- | --- |
-| **🎙️ Voice Agents** <br> Build real-time voice agents with Pipecat <br> [Learn more](/tutorials/pipecat) | **🔗 LiveKit Integration** <br> Create voice agents with LiveKit <br> [Learn more](/tutorials/livekit) |
-| **📄 API Reference** <br> Explore the full TTS API <br> [Learn more](/api-reference/endpoint/create-tts-stream) | **🔊 Voice Library** <br> Browse available voices <br> [Learn more](/api-reference/endpoint/list-voices) |
+<CardGroup cols={2}>
+  <Card title="Voice Agents" icon="/images/pipecat-orange.svg" href="/tutorials/pipecat">
+    Build real-time voice agents with Pipecat
+  </Card>
+  <Card title="LiveKit Integration" icon="/images/livekit-orange.svg" href="/tutorials/livekit">
+    Create voice agents with LiveKit
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference/endpoint/create-tts-stream">
+    Explore the full TTS API
+  </Card>
+  <Card title="Voice Library" icon="speech" href="/api-reference/endpoint/list-voices">
+    Browse available voices
+  </Card>
+</CardGroup>
+
+---
 
 ## Resources
 

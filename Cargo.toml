@@ -1,6 +1,6 @@
 [package]
 name = "camb_api"
-version = "0.1.1"
+version = "1.5.9"
 edition = "2021"
 description = "Rust SDK for camb_api"
 license = "MIT"
