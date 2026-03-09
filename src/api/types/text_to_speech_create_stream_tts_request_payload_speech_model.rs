@@ -14,6 +14,12 @@ pub enum CreateStreamTtsRequestPayloadSpeechModel {
     Mars7,
     #[serde(rename = "mars-6")]
     Mars6,
+    #[serde(rename = "mars-pro")]
+    MarsPro,
+    #[serde(rename = "mars-flash")]
+    MarsFlash,
+    #[serde(rename = "mars-instruct")]
+    MarsInstruct,
 }
 impl fmt::Display for CreateStreamTtsRequestPayloadSpeechModel {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -24,6 +30,9 @@ impl fmt::Display for CreateStreamTtsRequestPayloadSpeechModel {
             Self::Mars8Instruct => "mars-8-instruct",
             Self::Mars7 => "mars-7",
             Self::Mars6 => "mars-6",
+            Self::MarsPro => "mars-pro",
+            Self::MarsFlash => "mars-flash",
+            Self::MarsInstruct => "mars-instruct",
         };
         write!(f, "{}", s)
     }

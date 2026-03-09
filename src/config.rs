@@ -22,7 +22,7 @@ impl Default for ClientConfig {
             token: None,
             username: None,
             password: None,
-            timeout: Duration::from_secs(60),
+            timeout: Duration::from_secs(300),
             max_retries: 3,
             custom_headers: HashMap::from([
                 ("X-Fern-Language".to_string(), "Rust".to_string()),

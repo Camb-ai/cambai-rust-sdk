@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         text: "Hello from Camb AI Rust SDK! This is a test.".to_string(),
         voice_id: 20303,
         language: CreateStreamTtsRequestPayloadLanguage::EnUs,
-        speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Auto),
+        speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::MarsPro),
         user_instructions: None,
         enhance_named_entities_pronunciation: None,
         output_configuration: Some(StreamTtsOutputConfiguration {

@@ -1,6 +1,6 @@
 name: ci
 
-on: [push]
+on: [push, pull_request, merge_group]
 
 env:
   RUSTFLAGS: "-A warnings"
@@ -16,7 +16,7 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
 
       - name: Check
-        run: cargo check
+        run: cargo check --all-targets
 
   compile:
     runs-on: ubuntu-latest
@@ -28,7 +28,7 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
 
       - name: Compile
-        run: cargo build
+        run: cargo build --all-targets
 
   test:
     runs-on: ubuntu-latest

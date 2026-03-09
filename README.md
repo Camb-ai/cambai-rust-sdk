@@ -84,7 +84,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut stream = client.text_to_speech.tts(&CreateStreamTtsRequestPayload {
         text: "Hello from Camb AI!".to_string(),
         voice_id: 20303,
-        language: Some(Languages::EN_US),
+        language: CreateStreamTtsRequestPayloadLanguage::EnUs,
         speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::MarsPro),
         ..Default::default()
     }, None).await?;
