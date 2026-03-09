@@ -23,8 +23,4 @@ pub struct StreamTtsInferenceOptions {
     pub inference_steps: Option<Option<i64>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub speaker_similarity: Option<Option<f64>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub localize_speaker_weight: Option<Option<f64>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub acoustic_quality_boost: Option<Option<bool>>,
 }

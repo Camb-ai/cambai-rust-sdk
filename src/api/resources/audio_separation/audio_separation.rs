@@ -59,7 +59,7 @@ impl AudioSeparationClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("audio-separation-result/{}", run_id.unwrap_or_default()),
+                &format!("audio-separation-result/{}", run_id),
                 None,
                 None,
                 options,

@@ -1,7 +1,8 @@
 pub use crate::prelude::*;
 
+/// BCP-47 locale code for TTS language selection.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
-pub enum CreateStreamTtsRequestPayloadLanguage {
+pub enum TtsLanguage {
     #[serde(rename = "ar-kw")]
     ArKw,
     #[serde(rename = "de-ch")]
@@ -127,7 +128,7 @@ pub enum CreateStreamTtsRequestPayloadLanguage {
     #[serde(rename = "ar-dz")]
     ArDz,
 }
-impl fmt::Display for CreateStreamTtsRequestPayloadLanguage {
+impl fmt::Display for TtsLanguage {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let s = match self {
             Self::ArKw => "ar-kw",

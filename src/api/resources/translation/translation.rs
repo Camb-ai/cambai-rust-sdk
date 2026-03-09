@@ -85,7 +85,7 @@ impl TranslationClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("translation-result/{}", run_id.unwrap_or_default()),
+                &format!("translation-result/{}", run_id),
                 None,
                 None,
                 options,

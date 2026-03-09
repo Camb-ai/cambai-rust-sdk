@@ -23,7 +23,7 @@ impl TranslatedStoryClient {
         self.http_client
             .execute_request(
                 Method::POST,
-                &format!("translated-story/{}", run_id.unwrap_or_default()),
+                &format!("translated-story/{}", run_id),
                 Some(serde_json::to_value(request).unwrap_or_default()),
                 None,
                 options,
@@ -60,7 +60,7 @@ impl TranslatedStoryClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("translated-story-result/{}/{}", run_id.unwrap_or_default(), target_language.0),
+                &format!("translated-story-result/{}/{}", run_id, target_language.0),
                 None,
                 QueryBuilder::new()
                     .serialize("include_transcript", request.include_transcript.clone())

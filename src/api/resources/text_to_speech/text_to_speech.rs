@@ -112,7 +112,7 @@ impl TextToSpeechClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("tts-result/{}", run_id.unwrap_or_default()),
+                &format!("tts-result/{}", run_id),
                 None,
                 QueryBuilder::new()
                     .string("output_type", request.output_type.clone())

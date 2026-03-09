@@ -56,7 +56,7 @@ impl TextToVoiceClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("text-to-voice-result/{}", run_id.unwrap_or_default()),
+                &format!("text-to-voice-result/{}", run_id),
                 None,
                 None,
                 options,

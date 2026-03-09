@@ -78,7 +78,7 @@ impl StoryClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("story-result/{}", run_id.unwrap_or_default()),
+                &format!("story-result/{}", run_id),
                 None,
                 QueryBuilder::new()
                     .serialize("include_transcript", request.include_transcript.clone())

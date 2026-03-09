@@ -69,7 +69,7 @@ impl DubClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("dub-result/{}", run_id.unwrap_or_default()),
+                &format!("dub-result/{}", run_id),
                 None,
                 None,
                 options,
@@ -106,7 +106,7 @@ impl DubClient {
         self.http_client
             .execute_request(
                 Method::GET,
-                &format!("transcript/{}/{}", run_id.unwrap_or_default(), language.0),
+                &format!("transcript/{}/{}", run_id, language.0),
                 None,
                 QueryBuilder::new()
                     .serialize("format_type", request.format_type.clone())
@@ -127,7 +127,7 @@ impl DubClient {
         self.http_client
             .execute_request(
                 Method::POST,
-                &format!("dub-alt-format/{}/{}", run_id.unwrap_or_default(), language.0),
+                &format!("dub-alt-format/{}/{}", run_id, language.0),
                 Some(serde_json::to_value(request).unwrap_or_default()),
                 None,
                 options,

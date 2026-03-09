@@ -94,7 +94,7 @@ impl TextToAudioClient {
         self.http_client
             .execute_stream_request(
                 Method::GET,
-                &format!("text-to-sound-result/{}", run_id.unwrap_or_default()),
+                &format!("text-to-sound-result/{}", run_id),
                 None,
                 QueryBuilder::new()
                     .string("output_type", request.output_type.clone())
