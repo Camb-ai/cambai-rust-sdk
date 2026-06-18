@@ -66,6 +66,40 @@ let tts_provider = BasetenProvider::new(
 
 NOTE: For more examples and full runnable files refer to the `examples/` directory.
 
+#### TTS request options
+
+`client.text_to_speech.tts(...)` accepts the core request fields plus optional controls for model behavior and output format:
+
+| Field | Description |
+| :--- | :--- |
+| `text` | Text to synthesize. For MARS Instruct, you can include inline emotion or pacing tags. |
+| `language` | Locale such as `CreateStreamTtsRequestPayloadLanguage::EnUs`. |
+| `voice_id` | Voice profile ID from the voice list APIs. |
+| `speech_model` | Model to use, such as `Mars8`, `Mars8Instruct`, or `Mars8Flash`. |
+| `user_instructions` | Adds style, tone, pronunciation, or delivery guidance for the request. Available only with MARS Instruct. |
+| `output_configuration` | Output settings such as audio format, duration, and enhancement. |
+| `voice_settings` | Voice behavior controls such as reference enhancement or accent preservation. |
+| `inference_options` | Advanced generation controls for supported models. |
+| `enhance_named_entities_pronunciation` | Improves pronunciation for names and other named entities when supported. |
+
+```rust
+let mut stream = client.text_to_speech.tts(&CreateStreamTtsRequestPayload {
+    text: "[warm, friendly] Great to meet you!".to_string(),
+    voice_id: 147320,
+    language: CreateStreamTtsRequestPayloadLanguage::EnUs,
+    speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Mars8Instruct),
+    user_instructions: Some(Some("Speak warmly and clearly.".to_string())),
+    output_configuration: Some(StreamTtsOutputConfiguration {
+        format: Some(OutputFormat::Wav),
+        duration: None,
+        apply_enhancement: None,
+    }),
+    voice_settings: None,
+    inference_options: None,
+    enhance_named_entities_pronunciation: None,
+}, None).await?;
+```
+
 ### 1. Text-to-Speech (TTS)
 
 Convert text into spoken audio using one of Camb AI's high-quality voices.
@@ -84,9 +118,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut stream = client.text_to_speech.tts(&CreateStreamTtsRequestPayload {
         text: "Hello from Camb AI!".to_string(),
         voice_id: 20303,
-        language: Some(Languages::EN_US),
-        speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::MarsPro),
-        ..Default::default()
+        language: CreateStreamTtsRequestPayloadLanguage::EnUs,
+        speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Mars8),
+        user_instructions: None,
+        enhance_named_entities_pronunciation: None,
+        output_configuration: None,
+        voice_settings: None,
+        inference_options: None,
     }, None).await?;
 
     let mut file = std::fs::File::create("output.mp3")?;
