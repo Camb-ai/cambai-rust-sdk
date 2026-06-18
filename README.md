@@ -85,10 +85,10 @@ NOTE: For more examples and full runnable files refer to the `examples/` directo
 ```rust
 let mut stream = client.text_to_speech.tts(&CreateStreamTtsRequestPayload {
     text: "[warm, friendly] Great to meet you!".to_string(),
-    voice_id: 20303,
+    voice_id: 147320,
     language: CreateStreamTtsRequestPayloadLanguage::EnUs,
     speech_model: Some(CreateStreamTtsRequestPayloadSpeechModel::Mars8Instruct),
-    user_instructions: Some(Some("Speak warmly and with enthusiasm.".to_string())),
+    user_instructions: Some(Some("Speak warmly and clearly.".to_string())),
     output_configuration: Some(StreamTtsOutputConfiguration {
         format: Some(OutputFormat::Wav),
         duration: None,
